@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Canvas from "./Components/Canvas";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import "./App.css"; // Import the CSS file
 
 function App() {
+  const [cards, setCards] = useState([]);
+
+  const addCard = () => {
+    const newCard = {
+      id: Date.now(), // Unique ID
+      text: "New Card",
+      width: 200,
+      height: 100,
+      x: 50,
+      y: 50,
+    };
+    setCards([...cards, newCard]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <DndProvider backend={HTML5Backend}>
+      <div className="App">
+        <Canvas cards={cards} />
+      </div>
+    </DndProvider>
   );
 }
 

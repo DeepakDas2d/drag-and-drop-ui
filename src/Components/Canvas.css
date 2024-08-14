@@ -1,3 +1,10 @@
+.canvas-container {
+  position: relative; /* Ensure the container is positioned */
+  height: 100vh; /* Make the container full-height to see the centering effect */
+  border: 1px solid #ccc; /* Optional: add a border to visualize the canvas area */
+  overflow: auto; /* Ensure canvas is scrollable if needed */
+}
+
 .add-card-button {
   background-color: #007bff; /* Primary blue color */
   color: white; /* White text */
@@ -7,7 +14,11 @@
   font-size: 16px; /* Increase font size */
   cursor: pointer; /* Pointer cursor on hover */
   transition: background-color 0.3s ease; /* Smooth background color transition */
-  margin: 20px; /* Margin around the button */
+  margin: 0; /* Remove default margin */
+  position: absolute; /* Position absolutely within the container */
+  top: 20px; /* Space from the top of the container */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Adjust position to be truly centered */
 }
 
 .add-card-button:hover {
@@ -17,8 +28,4 @@
 .add-card-button:focus {
   outline: none; /* Remove default focus outline */
   box-shadow: 0 0 0 3px rgba(38, 143, 255, 0.5); /* Add a custom focus shadow */
-}
-
-.App {
-  padding: 20px;
 }
